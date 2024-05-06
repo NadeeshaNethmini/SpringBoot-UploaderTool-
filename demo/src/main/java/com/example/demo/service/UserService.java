@@ -21,9 +21,7 @@ public class UserService {
     private ModelMapper modelMapper;
 
     public UserDTO saveUser(UserDTO userDTO){
-        System.out.println(userDTO);
         User user = modelMapper.map(userDTO, User.class);
-        System.out.println(user);
         userRepo.save(user);
         return modelMapper.map(user, UserDTO.class);
     }

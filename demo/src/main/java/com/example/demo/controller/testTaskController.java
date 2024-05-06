@@ -10,6 +10,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin
 public class testTaskController {
     List<Map<String, Object>> responseList;
     @Autowired
@@ -41,7 +42,6 @@ public class testTaskController {
 
     @PostMapping("/ChangeStatus")
     public String changeStatus(@RequestBody Map<String,String> payload){
-//        return "Status Changed";
         return details.changeStatus(payload);
     }
 
