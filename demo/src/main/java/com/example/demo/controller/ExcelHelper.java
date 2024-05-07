@@ -8,9 +8,12 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -123,13 +126,15 @@ public class ExcelHelper {
             row.createCell(4).setCellValue(error.getError());
         }
 
+        String filePath = "src/main/resources/static/functionalObjectErrors.xls"; // Adjust the path as needed
+        Path outputPath = Paths.get(filePath);
+
         try {
-            workbook.write(
-                    new FileOutputStream("src/main/resources/static/functionalObjectErrors.xls")
-            );
+            workbook.write(new FileOutputStream(outputPath.toFile()));
             workbook.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 }
